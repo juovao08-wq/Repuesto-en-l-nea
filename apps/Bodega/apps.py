@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
-
-class BodegaConfig(AppConfig):
-    name = 'Bodega'
+class CatalogoConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.Bodega'
+    verbose_name = 'Bodega de Repuestos'
