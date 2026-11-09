@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/6.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 from pathlib import Path
 from django.contrib.messages import constants as messages
@@ -128,7 +131,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'usuarios:login'
-LOGIN_REDIRECT_URL = 'Bodega:lista'
+LOGIN_REDIRECT_URL = 'catalogo:lista'
 LOGOUT_REDIRECT_URL = 'core:inicio'
 
 MESSAGE_TAGS = {

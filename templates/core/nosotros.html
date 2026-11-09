@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuestra Bodega | AutoParts Bodega{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="text-white p-5 text-center" style="background: linear-gradient(135deg, #111827 0%, #1f2937 70%, #7f1d1d 100%); border-bottom: 4px solid #dc2626;">
+                <i class="bi bi-gear-wide-connected text-danger display-3 mb-2"></i>
+                <h1 class="fw-bold mb-2">Sobre AutoParts Bodega</h1>
+                <p class="lead text-light opacity-75 mb-0">Abastecimiento técnico de repuestos OEM y componentes automotrices en Chile.</p>
+            </div>
+
+            <div class="card-body p-4 p-md-5 bg-white">
+                <div class="row gy-4 mb-5">
+                    <div class="col-md-6">
+                        <h4 class="fw-bold text-dark mb-3"><i class="bi bi-building-gear text-danger me-2"></i>Nuestra Trayectoria</h4>
+                        <p class="text-secondary lh-base">
+                            AutoParts Bodega nació para solucionar el abastecimiento rápido y confiable de repuestos automotrices tanto para propietarios de vehículos como para talleres mecánicos y flotas comerciales.
+                        </p>
+                        <p class="text-secondary lh-base">
+                            Trabajamos directamente con fabricantes de equipo original (OEM) en sistemas de frenos, distribución, suspensión y electricidad automotriz, asegurando compatibilidad exacta por código de pieza.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4 class="fw-bold text-dark mb-3"><i class="bi bi-shield-check text-danger me-2"></i>Estándares de Calidad</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0">
+                                <i class="bi bi-check-circle-fill text-danger me-2"></i>
+                                <strong>Certificación OEM:</strong> Repuestos originales y alternativos homologados bajo norma internacional.
+                            </li>
+                            <li class="list-group-item px-0">
+                                <i class="bi bi-check-circle-fill text-danger me-2"></i>
+                                <strong>Control de Stock en Tiempo Real:</strong> Disponibilidad inmediata verificada en nuestra bodega central.
+                            </li>
+                            <li class="list-group-item px-0">
+                                <i class="bi bi-check-circle-fill text-danger me-2"></i>
+                                <strong>Asesoría por Código OEM / VIN:</strong> Validamos la compatibilidad técnica antes del despacho.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Canales de Atención -->
+                <div class="row g-4 text-center">
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3 border">
+                            <i class="bi bi-box-seam text-danger fs-2 mb-2"></i>
+                            <h6 class="fw-bold">Bodega Central y Retiro</h6>
+                            <p class="small text-muted mb-0">Av. Libertador Bernardo O'Higgins, Chillán / Región de Ñuble</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3 border">
+                            <i class="bi bi-envelope-paper text-dark fs-2 mb-2"></i>
+                            <h6 class="fw-bold">Ventas y Cotizaciones</h6>
+                            <p class="small text-muted mb-0">ventas@autopartsbodega.cl</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3 border">
+                            <i class="bi bi-whatsapp text-success fs-2 mb-2"></i>
+                            <h6 class="fw-bold">Soporte Técnico Talleres</h6>
+                            <p class="small text-muted mb-0">+56 9 8765 4321</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio | AutoParts Bodega - Repuestos y Componentes Automotrices{% endblock %}
+
+{% block content %}
+<!-- Banner Principal Automotriz -->
+<div class="p-5 mb-5 rounded-4 text-white shadow position-relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 60%, #7f1d1d 100%); border-left: 6px solid #dc2626;">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <span class="badge bg-danger text-white px-3 py-2 fw-bold mb-3 fs-6">
+                <i class="bi bi-wrench-adjustable-circle me-1"></i>Stock Directo de Bodega
+            </span>
+            <h1 class="display-4 fw-bold mb-3">Repuestos Automotrices de Alto Rendimiento</h1>
+            <p class="lead text-light opacity-75 mb-4">
+                Encuentra pastillas de freno, kits de distribución, amortiguadores, baterías y componentes eléctricos multimarca. Piezas OEM certificadas con disponibilidad inmediata para tu vehículo o taller mecánico.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'catalogo:lista' %}" class="btn btn-danger btn-lg fw-bold px-4 shadow-sm">
+                    <i class="bi bi-search me-2"></i>Buscar Repuestos en Catálogo
+                </a>
+                <a href="{% url 'core:nosotros' %}" class="btn btn-outline-light btn-lg px-4">
+                    <i class="bi bi-building-gear me-2"></i>Conoce Nuestra Bodega
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+            <i class="bi bi-car-front-fill text-danger opacity-75" style="font-size: 8.5rem;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Garantías y Servicios de la Distribuidora -->
+<div class="row g-3 mb-5 text-center">
+    <div class="col-md-4">
+        <div class="p-4 bg-white rounded-3 shadow-sm border-top border-4 border-danger h-100">
+            <i class="bi bi-patch-check-fill text-danger display-5 mb-2"></i>
+            <h5 class="fw-bold mb-1">Calidad OEM Garantizada</h5>
+            <p class="text-muted small mb-0">Trabajamos con fabricantes líderes (Brembo, Bosch, Gates, NGK, Monroe y Valeo).</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 bg-white rounded-3 shadow-sm border-top border-4 border-dark h-100">
+            <i class="bi bi-upc-scan text-dark display-5 mb-2"></i>
+            <h5 class="fw-bold mb-1">Compatibilidad Exacta</h5>
+            <p class="text-muted small mb-0">Cada repuesto incluye su código OEM y modelos compatibles verificados en bodega.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-4 bg-white rounded-3 shadow-sm border-top border-4 border-warning h-100">
+            <i class="bi bi-truck-flatbed text-warning display-5 mb-2"></i>
+            <h5 class="fw-bold mb-1">Despacho Express a Talleres</h5>
+            <p class="text-muted small mb-0">Envíos rápidos y embalaje industrial reforzado a todas las regiones del país.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Sistemas / Categorías Automotrices -->
+{% if categorias %}
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 fw-bold mb-0"><i class="bi bi-diagram-3-fill text-danger me-2"></i>Sistemas y Líneas Automotrices</h2>
+        <a href="{% url 'catalogo:lista' %}" class="text-decoration-none text-danger fw-semibold">Ver todos los sistemas &rarr;</a>
+    </div>
+    <div class="row g-3">
+        {% for cat in categorias %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <a href="{% url 'catalogo:lista' %}?categoria={{ cat.slug }}" class="text-decoration-none">
+                <div class="card border text-center p-3 h-100 shadow-sm bg-white">
+                    <i class="bi bi-gear-fill text-dark fs-2 mb-2"></i>
+                    <h6 class="fw-bold text-dark mb-1">{{ cat.nombre }}</h6>
+                    <span class="badge bg-light text-secondary border">{{ cat.figuras.count }} repuestos</span>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Repuestos Destacados -->
+<div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 fw-bold mb-0"><i class="bi bi-lightning-charge-fill text-danger me-2"></i>Repuestos Destacados en Bodega</h2>
+        <a href="{% url 'catalogo:lista' %}" class="btn btn-outline-dark btn-sm">Ver inventario completo</a>
+    </div>
+
+    <div class="row g-4">
+        {% for figura in destacadas %}
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border">
+                <div class="bg-white text-center p-3 border-bottom position-relative" style="height: 210px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    {% if figura.imagen %}
+                        <img src="{{ figura.imagen.url }}" alt="{{ figura.nombre }}" class="img-fluid" style="max-height: 180px; object-fit: contain;">
+                    {% else %}
+                        <div class="text-center text-secondary">
+                            <i class="bi bi-nut-fill display-3 text-secondary opacity-50"></i>
+                            <div class="small text-muted mt-1">{{ figura.fabricante }}</div>
+                        </div>
+                    {% endif %}
+                    {% if figura.destacado %}
+                        <span class="position-absolute top-0 start-0 m-2 badge bg-danger text-white fw-bold">
+                            <i class="bi bi-bookmark-check-fill me-1"></i>Alta Demanda
+                        </span>
+                    {% endif %}
+                </div>
+
+                <div class="card-body d-flex flex-column p-3">
+                    <div class="d-flex justify-content-between align-items-center small text-muted mb-1">
+                        <span class="badge bg-light text-dark border">{{ figura.categoria.nombre }}</span>
+                        <span class="fw-bold text-danger">{{ figura.fabricante }}</span>
+                    </div>
+
+                    <h5 class="card-title fs-6 fw-bold mb-1 text-truncate" title="{{ figura.nombre }}">
+                        {{ figura.nombre }}
+                    </h5>
+                    {% if figura.escala %}
+                        <div class="small text-secondary mb-2"><i class="bi bi-upc me-1"></i>{{ figura.escala }}</div>
+                    {% endif %}
+
+                    <p class="card-text text-muted small flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        {{ figura.descripcion }}
+                    </p>
+
+                    <div class="d-flex justify-content-between align-items-center pt-2 mt-2 border-top">
+                        <span class="fs-5 fw-bold text-dark">{{ figura.precio_formateado }}</span>
+                        {% if figura.en_stock %}
+                            <span class="badge bg-success-subtle text-success border border-success-subtle">
+                                Stock: {{ figura.stock }} un.
+                            </span>
+                        {% else %}
+                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle">
+                                Sin Stock
+                            </span>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <a href="{% url 'catalogo:detalle' figura.slug %}" class="btn btn-outline-dark btn-sm">
+                            <i class="bi bi-file-earmark-text me-1"></i>Ficha Técnica
+                        </a>
+                        {% if figura.en_stock %}
+                            <a href="{% url 'pedidos:agregar' figura.id %}" class="btn btn-danger btn-sm fw-semibold">
+                                <i class="bi bi-cart-plus me-1"></i>Cotizar / Agregar
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <div class="card p-5 bg-white shadow-sm border">
+                <i class="bi bi-tools display-3 text-muted mb-3"></i>
+                <h5 class="text-secondary">Inventario en actualización.</h5>
+                <p class="text-muted small">Ejecuta el comando poblar_datos o ingresa nuevos repuestos desde el panel de Gestión.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
